@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="utf-8">
+  <title>Calculator</title>
+  <style>
+    body{
+        margin: 15px;
+        padding:0;
+	margin: 0px;
+	width: 50%;
+	background-color: black;
+        }
+    .container{
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate( -50%, -50%);
+              }
+	button {
+		margin: 5px;
+		height: 50px;
+		width: 50px;
+		font-size: 20px;
+		border: none;
+		outline: none;
+		box-shadow: 7px -1px 49px 5px rgba(1,1,1,0.75);
+	}
+	button:hover {
+		background-color: black;
+		color: white;
+		border: 1px solid white;
+	}
+
+	input {
+		width: 100%;
+		height: 30px;
+		margin-bottom: 20px;
+		font-size: 20px;
+		letter-spacing: 2px;
+		text-align: right;
+	}
+  </style>
+ </head>
+<body>
+	<div class="container">
+         <input type="number" id="entry">
+		<div class="container-buttons">
+			<button onclick="addNumberToInput(this)">1</button>
+			<button onclick="addNumberToInput(this)">2</button>
+			<button onclick="addNumberToInput(this)">3</button>
+			<button onclick="add(this)">+</button>
+		</div>
+		<div>
+			<button onclick="addNumberToInput(this)">4</button>
+			<button onclick="addNumberToInput(this)">5</button>
+			<button onclick="addNumberToInput(this)">6</button>
+			<button onclick="minus(this)">-</button>
+		</div>
+		<div>
+			<button onclick="addNumberToInput(this)">7</button>
+			<button onclick="addNumberToInput(this)">8</button>
+			<button onclick="addNumberToInput(this)">9</button>
+			<button onclick="multi(this)">*</button>
+			<button onclick="equal()">=</button>
+		</div>
+		<div>
+			<button onclick="sqrt(this)">sqrt</button>
+			<button onclick="addNumberToInput(this)">0</button>
+			<button onclick="addNumberToInput(this)">.</button>
+			<button onclick="divide(this)">/</button>
+                        <button onclick="clearButton()">C</button>
+		</div>
+		</div>
+	</div>
+<script>
+	var firstNum;
+	var sign;
+	function addNumberToInput(num) {
+        var entry = document.getElementById("entry");
+	entry.value += num.innerHTML;
+        }
+	function add(temdeg) {
+	firstNum = document.getElementById("entry").value;
+	sign = temdeg.innerHTML;
+	document.getElementById("entry").value = '';
+	}
+	function minus(temdeg){
+	firstNum = document.getElementById("entry").value;
+	sign = temdeg.innerHTML;
+	document.getElementById("entry").value = '';
+	}
+	function divide(temdeg){
+	firstNum = document.getElementById("entry").value;
+	sign = temdeg.innerHTML;
+	document.getElementById("entry").value = '';
+	}
+	function multi(temdeg){
+	firstNum = document.getElementById("entry").value;
+	sign = temdeg.innerHTML;
+	document.getElementById("entry").value = '';
+	}
+	function sqrt(temdeg){
+	firstNum = document.getElementById("entry").value;
+	sign = temdeg.innerHTML;
+	document.getElementById("entry").value = '';
+	}
+	function equal(){
+		if (sign == '+') {
+			var secondNum = document.getElementById("entry").value;	
+			document.getElementById("entry").value = parseInt(firstNum) + parseInt(secondNum);
+		} else if (sign == '-') {
+			var secondNum = document.getElementById("entry").value;
+			document.getElementById("entry").value = parseInt(firstNum) - parseInt(secondNum);
+		}
+
+		if (sign == '/') {
+			var secondNum = document.getElementById("entry").value;
+			document.getElementById("entry").value = parseInt(firstNum) / parseInt(secondNum);
+		} else if (sign == '*') {
+			var secondNum = document.getElementById("entry").value;
+			document.getElementById("entry").value = parseInt(firstNum) * parseInt(secondNum);
+		}
+		if (sign == 'sqrt') {
+			var secondNum = document.getElementById("entry").value;
+			console.log(Math.sqrt(parseInt(firstNum)));
+			document.getElementById("entry").value = Math.sqrt(parseInt(firstNum));
+		}
+	}
+	function clearButton() {
+	var entry = document.getElementById("entry");
+	entry.value = ''; 
+	}
+</script>
+</body>
+</html>
